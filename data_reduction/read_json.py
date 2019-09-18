@@ -1,6 +1,5 @@
 import json
-
-a = '/home/kc/gengxing/data/annotations/voc_coco_mot.json'
+a = '/home/kc/gengxing/data/annotations/voc_coco_mot_person_numup4.json'
 with open(a, 'r') as fa:
     a_json = json.load(fa)
 
@@ -20,10 +19,10 @@ for i in a_json["annotations"]:
         max_gt_id_voc = max(max_gt_id_voc, i['id'])
     elif i['image_id'] >= 2000000:
         num_mot_gt += 1
-        max_gt_id_coco = max(max_gt_id_coco, i['id'])
+        max_gt_id_mot = max(max_gt_id_mot, i['id'])
     else:
         num_coco_gt += 1
-        max_gt_id_mot = max(max_gt_id_mot, i['id'])
+        max_gt_id_coco = max(max_gt_id_coco, i['id'])
 
 print('num_voc_image, num_coco_image, num_mot_image:',num_voc_image, num_coco_image, num_mot_image)
 print('num_voc_gt, num_coco_gt, num_mot_gt:',num_voc_gt, num_coco_gt, num_mot_gt)
